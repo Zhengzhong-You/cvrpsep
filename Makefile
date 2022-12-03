@@ -31,8 +31,9 @@ TARGET_LIB = libcvrpsep
 CXXFLAGS = $(OPTFLAG)
 DEPFLAGS += -I. -D$(OS)
 
-LinuxCXX=g++
-CXX=$($(OS)CXX)
+#LinuxCXX=g++
+#CXX=$($(OS)CXX)
+CXX=g++
 
 ###############################################################################
 # Create the dependency information

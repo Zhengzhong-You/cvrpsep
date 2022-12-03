@@ -6,7 +6,11 @@
 #ifndef _H_MEMMOD
 #define _H_MEMMOD
 
+#ifdef __APPLE__
+#include <sys/malloc.h>
+#else
 #include <malloc.h>
+#endif
 #include <inttypes.h>
 
 void* MemGet(long unsigned int NoOfBytes); 
