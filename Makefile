@@ -29,6 +29,7 @@ COM_LIBOBJ = $(addprefix $(COM_TARGETDIR)/, $(COM_LIBSRC:.cpp=.o))
 COM_LIBDEP = $(addprefix $(COM_DEPDIR)/, $(COM_LIBSRC:.cpp=.d))
 TARGET_LIB = libcvrpsep
 CXXFLAGS = $(OPTFLAG)
+#CXXFLAGS = $(OPTFLAG) -arch x86_64
 DEPFLAGS += -I. -D$(OS)
 
 #LinuxCXX=g++
@@ -57,6 +58,15 @@ ${COM_DEPDIR}/%.d : %.cpp
 	g++ -MM $(DEPFLAGS) $< > $*.dd
 	@sed -e "s|$*.o|$(COM_DEPDIR)/$*.d $(COM_TARGETDIR)/$*.o|g" $*.dd > $@
 	@rm -f $*.dd
+
+#${COM_DEPDIR}/%.d : %.cpp
+#	@echo Creating dependency $*.d
+#	@mkdir -p ${COM_DEPDIR}
+#	@rm -f $*.d $*.dd
+#	g++ -MM $(DEPFLAGS) $< > $*.dd -arch x86_64
+#	@sed -e "s|$*.o|$(COM_DEPDIR)/$*.d $(COM_TARGETDIR)/$*.o|g" $*.dd > $@
+#	@rm -f $*.dd
+
 
 ###############################################################################
 # Create the targets
